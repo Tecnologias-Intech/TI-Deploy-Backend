@@ -1,0 +1,39 @@
+name: 'TI Deploy Test Action'
+description: "Firebase backend deployment"
+author: 'Ismael Pérez / Tecnologías Intech'
+
+inputs:
+  new-version:
+    description: "The new version to set in the code."
+    required: true
+  project-id:
+    description: "Project ID for status update."
+    required: true
+  deployment-id:
+    description: "Deployment ID for status update."
+    required: true
+  github-token:
+    description: "Access token for GitHub API."
+    required: true
+  env-secret:
+    description: "The content of the .env secret for the build."
+    required: false
+  firebase-service-account:
+    description: "The content of the Firebase service account file."
+    required: true
+  project:
+    description: "The Firebase project ID."
+  branch:
+    description: "The base branch for the PR (eg: main)."
+    required: false
+    default: 'main'
+  github-pat:
+    description: "Personal Access Token to approve/merge the PR."
+    required: true
+  ti-api:
+    description: "Endpoint responsible for updating deployment status."
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
